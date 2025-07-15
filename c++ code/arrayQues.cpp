@@ -76,6 +76,19 @@ void findMissing(vector<int> &v)
     }
     cout << "Missing number is : " << (Osum - Asum) << endl;
 }
+void findMissingXOR(vector<int> &v){
+    int arrElementXOR=0;
+    int orginalXOR=0;
+    for (int i=0;i<v.size();i++){
+        arrElementXOR ^=v[i];
+    
+    }
+    for (int i=0;i<=v.size();i++){
+        orginalXOR ^=i;
+    }
+    cout<<"missing nummber : "<< (orginalXOR ^ arrElementXOR )<< endl;
+
+}
 void print2Dvec(vector<vector<int>> &v)
 {
     for (int i = 0; i < v.size(); i++)
@@ -135,12 +148,14 @@ int main()
     // shiftbyK(arr,k);
 
     // problem 3 - find the missing number that is from the range of array
-    // vector<int> arr={0,1};
-    // findMissing(arr);
+    vector<int> arr={2,3,4,5,1,0};
+    findMissing(arr);
+    // finding missing numbmer using xor operator
+    findMissingXOR(arr);
 
     // problem 4 - shifting array by 90 degrees
-    vector<vector<int>> mat{{1, 2}, {1, 2}, {122, 0}};
-    cout << "Original matrix : " << endl;
-    print2Dvec(mat);
-    rotateBy90(mat);
+    // vector<vector<int>> mat{{1, 2}, {1, 2}, {122, 0}};
+    // cout << "Original matrix : " << endl;
+    // print2Dvec(mat);
+    // rotateBy90(mat);
 }
