@@ -49,6 +49,45 @@ string removeDuplicatesK(string s, int k)
     return ans;
 }
 
+string removeOccurences(string s, string substr)
+{
+    while (s.find(substr) != string::npos)
+    {
+        s.erase(s.find(substr), substr.length());
+    }
+    return s;
+}
+
+bool checkPalindromeWithRemovalK(string s, int k)
+{
+    int i = 0;
+    int count = 0;
+    int j = s.length() - 1;
+    while (i <= j)
+    {
+        if (s[i] != s[j])
+        {
+            if (count < k)
+            {
+                string s1 = s;
+                s1.erase(i, 1);
+                string s2 = s;
+                s2.erase(j, 1);
+                return checkPalindromeWithRemovalK(s1, k - 1) || checkPalindromeWithRemovalK(s2, k - 1);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            i++, j--;
+        }
+    }
+    return true;
+}
+
 int main()
 {
     string s1;
@@ -62,9 +101,21 @@ int main()
     // string result = removeDuplicates(s1);
     // cout << "after removing adjacent duplicates : " << result << endl;
 
-    // question 2 - removing adjacent duplicates that are coming k times in adjacent
-    //  example : s="aabbbabbbnnc" and k=3 , output = "nnc"
-    int k = 3;
-    string result = removeDuplicatesK(s1, k);
-    cout << "after removing k adjacent duplicates : " << result << endl;
+    // // question 2 - removing adjacent duplicates that are coming k times in adjacent
+    // //  example : s="aabbbabbbnnc" and k=3 , output = "nnc"
+    // int k = 3;
+    // string result = removeDuplicatesK(s1, k);
+    // cout << "after removing k adjacent duplicates : " << result << endl;
+
+    // // question -3 , remove all occurences of a substring
+    // string substr="abc";
+    // string result = removeOccurences(s1, substr);
+    // cout << "after removing all Occurences : " << result << endl;
+
+    // question 4 - check valid palindrome after k removal of char also
+    int k = 2;
+    if (checkPalindromeWithRemovalK(s1, k))
+        cout << "valid palindrome for us " << endl;
+    else
+        cout << "not a valid palindrome for us " << endl;
 }
