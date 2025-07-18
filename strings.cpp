@@ -88,6 +88,32 @@ bool checkPalindromeWithRemovalK(string s, int k)
     return true;
 }
 
+int expand(string s, int i, int j)
+{
+    int Icount = 0;
+    while (i >= 0 && j < s.length() && s[i] == s[j])
+    {
+        Icount++;
+        i--;
+        j++;
+    }
+    return Icount;
+}
+int countAllPosPalindrome(string s)
+{
+    int count = 0;
+    for (int i = 0; i < s.length(); i++)
+    {
+        // first odd k liye
+        int oddKaAns = expand(s, i, i);
+        // second even k liye
+        int evenKaAns = expand(s, i, i + 1);
+        // adding their count
+        count = count + oddKaAns + evenKaAns;
+    }
+    return count;
+}
+
 int main()
 {
     string s1;
@@ -112,10 +138,18 @@ int main()
     // string result = removeOccurences(s1, substr);
     // cout << "after removing all Occurences : " << result << endl;
 
-    // question 4 - check valid palindrome after k removal of char also
-    int k = 2;
-    if (checkPalindromeWithRemovalK(s1, k))
-        cout << "valid palindrome for us " << endl;
-    else
-        cout << "not a valid palindrome for us " << endl;
+    // // question 4 - check valid palindrome after k removal of char also
+    // int k = 2;
+    // if (checkPalindromeWithRemovalK(s1, k))
+    // {
+    //     cout << "valid palindrome for us " << endl;
+    // }
+    // else
+    // {
+    //     cout << "not a valid palindrome for us " << endl;
+    // }
+
+    // question 5- count the total number of all possible palindrome substrings in a given substring
+    int Pcount = countAllPosPalindrome(s1);
+    cout << "total possible palindrome substring in the string is : " << Pcount << endl;
 }
