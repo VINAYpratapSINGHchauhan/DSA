@@ -114,6 +114,38 @@ int countAllPosPalindrome(string s)
     return count;
 }
 
+string decodeTheString(string key, string message)
+{
+    // create the mapping
+    char start = 'a';
+    char map[280] = {0};
+    for (auto ch : key)
+    {
+        if (ch != ' ' && map[ch] == 0)
+        {
+            map[ch] = start;
+            start++;
+        }
+    }
+
+    // use the mapping
+    string ans;
+    for (auto ch : message)
+    {
+        if (ch == ' ')
+        {
+            ans.push_back(' ');
+        }
+        else
+        {
+            char decodedValue = map[ch];
+            ans.push_back(decodedValue);
+        }
+    }
+
+    return ans;
+}
+
 int main()
 {
     string s1;
@@ -150,6 +182,16 @@ int main()
     // }
 
     // question 5- count the total number of all possible palindrome substrings in a given substring
-    int Pcount = countAllPosPalindrome(s1);
-    cout << "total possible palindrome substring in the string is : " << Pcount << endl;
+    // int Pcount = countAllPosPalindrome(s1);
+    // cout << "total possible palindrome substring in the string is : " << Pcount << endl;
+
+    // //  question 6- decode the message i.e you are given with the key and by the key u do the mapping (mapping of one character cannot be done again ) after mapping you make the substiution table (col 1- key character , col 2- mapped value ) and with the help of substitution table you decode the input message and output the decoded value
+    // string key = "the quick brown fox jumps over the lazy dog";
+    // string message = "vkbs bs t suepuv";
+    // string result = decodeTheString(key, message);
+    // cout << "decoded message is : " << result << endl;
+
+    // question 7 -
+
+
 }
