@@ -191,7 +191,11 @@ int main()
     // string result = decodeTheString(key, message);
     // cout << "decoded message is : " << result << endl;
 
-    // question 7 -
+    // question 7 -find minimum amount of time to collect the garbage from the garbage vector string and the travel time indicatign string vector
+    
+    // question 8 (791 in lc) - custom sort sorting , sorting a given string on the basis of order of second string given with 
+
+    // question 9 (890 in lc) - find and replace pattern ,  given  a list of strings 'words' and a string 'pattern' and  returns a list of strings of words[i] that matches the pattern 
 
 
 }
