@@ -314,4 +314,8 @@ int main()
     // {
     //     cout << e << " ";
     // }
+
+    // question pending - minimum time difference(539 in lc)
+    // question pending - number of laser beam in a bank (2125 in lc)
+    
 } 
