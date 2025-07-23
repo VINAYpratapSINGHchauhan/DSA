@@ -37,6 +37,23 @@ int main()
 // char array pointer and integer array pointer behave differently see in the copy
 //imp for MCQ see in the copy for more info
 
+// int *ptr=&arr;  this will give error wrong syntax
 
+//very confusing point of pointer :
+
+// 1. this is a pointer to an  whole array 
+int arr[5]={10,20,30,40,50};
+int (*ptr)[5]=&arr;
+//access element like 
+cout<<(*ptr)[0]<<" "<< (*ptr)[4]<<endl;
+
+// 2. this is a array of pointer of size 5 names ptr1
+int a=10, b=20, c=30;
+int * ptr1[3]={&a,&b,&c};
+cout<<&a<<endl; //this is equal to ptr1[0]
+//access element like 
+cout<<ptr1[0]<<" "<<*ptr1[0]<<" "<< ptr1[1]<<endl;
+
+ 
 
 }
