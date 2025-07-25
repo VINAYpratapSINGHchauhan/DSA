@@ -54,6 +54,10 @@ cout<<&a<<endl; //this is equal to ptr1[0]
 //access element like 
 cout<<ptr1[0]<<" "<<*ptr1[0]<<" "<< ptr1[1]<<endl;
 
- 
+//types of pointer:
+// 1. wild pointer
+// 2. void pointer
+// 3. dangling pointer
+
 
 }
