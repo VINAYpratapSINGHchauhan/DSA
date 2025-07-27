@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include<limits.h>
+#include <limits.h>
 using namespace std;
 int factorial(int n)
 {
@@ -127,13 +127,64 @@ void printSubsequences(string str, string output, int index)
     printSubsequences(str, output, index + 1);
 }
 
-int maximiseTheCuts(int n , int x, int y , int z){
-    if(n==0)return 0;
-    if(n<0)return INT_MIN;
-    int option1 =1+maximiseTheCuts(n-x,x,y,z);
-    int option2 =1+maximiseTheCuts(n-y,x,y,z);
-    int option3 =1+maximiseTheCuts(n-z,x,y,z);
-    return max(option1,max(option2,option3));
+int maximiseTheCuts(int n, int x, int y, int z)
+{
+    if (n == 0)
+        return 0;
+    if (n < 0)
+        return INT_MIN;
+    int option1 = 1 + maximiseTheCuts(n - x, x, y, z);
+    int option2 = 1 + maximiseTheCuts(n - y, x, y, z);
+    int option3 = 1 + maximiseTheCuts(n - z, x, y, z);
+    return max(option1, max(option2, option3));
+}
+
+int coinChange(vector<int> &coins, int amount)
+{
+    if (amount == 0)
+    {
+        return 0;
+    }
+    if (amount < 0)
+    {
+        return INT_MAX;
+    }
+    int mini = INT_MAX;
+    for (int i = 0; i < coins.size(); i++)
+    {
+        int coin = coins[i];
+        if (coin <= amount)
+        {
+            int recAns = coinChange(coins, amount - coin);
+            if (recAns != INT_MAX)
+            {
+                int ans = 1 + recAns;
+                mini = min(mini, ans);
+            }
+        }
+    }
+    return (mini == INT_MAX) ? -1 : mini;
+}
+
+int solve(vector<int> &nums, int size, int index)
+{
+    if (index >= size)
+    {
+        return 0;
+    }
+
+    // chori krllo
+    int option1 = nums[index] + solve(nums, size, index + 2);
+    // chori na kro
+    int option2 = 0 + solve(nums, size, index + 1);
+    return max(option1, option2);
+}
+int rob(vector<int> &nums)
+{
+    int size = nums.size();
+    int index = 0;
+    int ans = solve(nums, size, index);
+    return ans;
 }
 
 int main()
@@ -206,5 +257,12 @@ int main()
     // int m=9, x = 4, y = 2, z = 3;
     // cout << "maximun cut segments are : " << maximiseTheCuts(m, x, y, z)<<endl;
 
-    
+    // // coins change
+    // vector<int> v={2};
+    // int amount =3;
+    // cout<<"minimum coins used : "<<coinChange(v,amount);
+
+    // rob the house
+    vector<int> nums = {4, 5, 2, 6};
+    cout << "maximum robbery can have : " << rob(nums);
 }
