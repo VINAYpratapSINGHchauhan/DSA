@@ -20,11 +20,11 @@ int robTheHouse(vector<int> &nums)
     int size = nums.size();
     if (size == 1)
     {
-        nums[0];
+        return nums[0];
     }
     int index = 0;
-    int option1 = nums[index] + adjacentRob(nums, 0, size - 2);
-    int option2 = 0 + adjacentRob(nums, 1, size - 1);
+    int option1 = adjacentRob(nums, 0, size - 2);
+    int option2 =adjacentRob(nums, 1, size - 1);
     int ans = max(option1, option2);
     return ans;
 }
