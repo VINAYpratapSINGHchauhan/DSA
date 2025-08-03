@@ -28,6 +28,15 @@ int robTheHouse(vector<int> &nums)
     int ans = max(option1, option2);
     return ans;
 }
+
+int dearangement(int n){
+    //base case
+    if(n==1)return 0;
+    if(n==2)return 1;
+    //recursive call
+    int ans =(n-1)*(dearangement(n-1)+dearangement(n-2));
+    return ans;
+}
 int main()
 {
     // recursion marathon questions
@@ -37,5 +46,6 @@ int main()
     // cout << "maximum robbery is of amount : " << robTheHouse(nums) << endl;
 
     //ques 2 - count dearrangements (permutation such that no element appears in its original position)
-    
+    int n=6; //that is the number of elemnst in our arrangements
+    cout<<"number of favourable dearangements possible : "<<dearangement(n);
 }
