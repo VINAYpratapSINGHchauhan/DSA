@@ -32,7 +32,10 @@ int main()
 {
     // recursion marathon questions
 
-    // ques 1 - house robber 2 :u are given a nums array returns the max of non adjacent money u can ron but this time houses ar ein circle means 1st is the adjacent of last
-    vector<int> nums = {1, 2, 4, 5, 6, 3};
-    cout << "maximum robbery is of amount : " << robTheHouse(nums) << endl;
+    // // ques 1 - house robber 2 :u are given a nums array returns the max of non adjacent money u can ron but this time houses ar ein circle means 1st is the adjacent of last
+    // vector<int> nums = {1, 2, 4, 5, 6, 3};
+    // cout << "maximum robbery is of amount : " << robTheHouse(nums) << endl;
+
+    //ques 2 - count dearrangements (permutation such that no element appears in its original position)
+    
 }
