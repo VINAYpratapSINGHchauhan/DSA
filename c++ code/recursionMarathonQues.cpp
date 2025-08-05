@@ -37,6 +37,20 @@ int dearangement(int n){
     int ans =(n-1)*(dearangement(n-1)+dearangement(n-2));
     return ans;
 }
+
+const int MOD = 1e9 + 7;
+
+int paintingFence(int n, int k) {
+    // Base cases
+    if (n == 0) return 0;
+    if (n == 1) return k;
+    if (n == 2) return (k + 1LL * k * (k - 1)) % MOD;
+
+    // Recursive step
+    int ans = (1LL * (paintingFence(n - 1, k) + paintingFence(n - 2, k)) * (k - 1)) % MOD;
+    return ans;
+}
+
 int main()
 {
     // recursion marathon questions
@@ -45,7 +59,13 @@ int main()
     // vector<int> nums = {1, 2, 4, 5, 6, 3};
     // cout << "maximum robbery is of amount : " << robTheHouse(nums) << endl;
 
-    //ques 2 - count dearrangements (permutation such that no element appears in its original position)
-    int n=6; //that is the number of elemnst in our arrangements
-    cout<<"number of favourable dearangements possible : "<<dearangement(n);
+    // //ques 2 - count dearrangements (permutation such that no element appears in its original position)
+    // int n=6; //that is the number of elemnst in our arrangements
+    // cout<<"number of favourable dearangements possible : "<<dearangement(n);
+
+    // ques 3- painting fence algorithm : given with n number of poles in an fence that are goinh to colored with k color atmost 2 can be colored same
+    int n , k;
+    cout<<"Enter the number of poles and the number of colors available : "<<endl;
+    cin >>n >>k;
+    cout<<"total number of possible ways of painting the fence is : "<<paintingFence(n,k);
 }
