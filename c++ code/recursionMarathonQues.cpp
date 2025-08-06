@@ -51,6 +51,38 @@ int paintingFence(int n, int k) {
     return ans;
 }
 
+int editTheDistance(string &word1, string &word2){
+    int i=0;
+    int j =0;
+    int ans =solveEditTheDistance(word1, word2,i,j);
+    return ans;
+}
+int solveEditTheDistance(string &w1,string &w2, int i , int j ){
+    //base casse 
+if (i>=w1.length()){
+            // word1 khtm ho gya but word2 bcha h abhi
+            return w2.length()-j;
+        }
+        if (j>=w2.length()){
+            //word2 khtm ho gya 
+            return w1.length()-i;
+        }
+        int ans =0;
+        if (w1[i]==w2[j]){
+            //matches
+            ans=0+solveEditTheDistance(w1,w2,i+1,j+1);
+        }
+        else{
+            //not matches
+            // 1. insert 
+            int option1=1+solveEditTheDistance(w1, w2,i,j+1);
+            // 2. remove
+            int option2=1+solveEditTheDistance(w1, w2,i+1,j);
+            // 3. replace
+            int option3=1+solveEditTheDistance(w1, w2, i+1,j+1);
+            ans =min(option1,min(option2,option3));
+        }
+        return ans;}
 int main()
 {
     // recursion marathon questions
@@ -68,4 +100,10 @@ int main()
     cout<<"Enter the number of poles and the number of colors available : "<<endl;
     cin >>n >>k;
     cout<<"total number of possible ways of painting the fence is : "<<paintingFence(n,k);
+
+    //ques 4 - edit the distance : u are given with two string word1 adn word2 return the minimun number of operations rewuired to convert wrod1 to word2
+    string word1="horse";
+    string word2="ros";
+    cout<<"minmun operations to convert = "<<editTheDistance(word1,word2);
+
 }
