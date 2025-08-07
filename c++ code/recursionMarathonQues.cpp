@@ -54,7 +54,7 @@ int paintingFence(int n, int k)
         return (k + 1LL * k * (k - 1)) % MOD;
 
     // Recursive step
-    int ans = (1LL * (paintingFence(n - 1, k) + paintingFence(n - 2, k)) * (k - 1)) % MOD;
+    int ans = (1LL * paintingFence(n - 2, k)  +(paintingFence(n - 1, k)  ) * (k - 1)) % MOD;
     return ans;
 }
 
@@ -116,8 +116,10 @@ int main()
     // cin >>n >>k;
     // cout<<"total number of possible ways of painting the fence is : "<<paintingFence(n,k);
 
-    // ques 4 - edit the distance : u are given with two string word1 adn word2 return the minimun number of operations rewuired to convert wrod1 to word2
-    string word1 = "horse";
-    string word2 = "ros";
-    cout << "minmun operations to convert = " << editTheDistance(word1, word2);
+    // // ques 4 - edit the distance : u are given with two string word1 adn word2 return the minimun number of operations rewuired to convert wrod1 to word2
+    // string word1 = "horse";
+    // string word2 = "ros";
+    // cout << "minmun operations to convert = " << editTheDistance(word1, word2);
+
+    //ques 5 -  
 }
