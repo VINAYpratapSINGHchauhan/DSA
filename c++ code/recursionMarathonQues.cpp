@@ -98,6 +98,32 @@ int editTheDistance(string &word1, string &word2)
     return ans;
 }
 
+int solveMS(vector<vector<int>> & m, int i , int j , int & maxi){
+    //base case
+    if(i>=m.size()||j>=m[0].size()){
+        return 0;
+    }
+    //jao teeno directions mei 
+    int right=solveMS(m,i,j+1,maxi);
+    int diag=solveMS(m,i+1,j+1,maxi);
+    int down =solveMS(m,i+1,j,maxi);
+    //krna kb h 
+    if(m[i][j]==0){
+        return 0;
+    }
+    else{
+        int ans=1+min(right,min(diag,down));
+        maxi=max(maxi,ans);
+        return ans;
+    }
+}
+int maximalSquare(vector<vector<int>> &matrix){
+    int i =0;
+    int j=0;
+    int maxSquareSide=INT_MIN;
+    solveMS(matrix, i , j,maxSquareSide);
+    return maxSquareSide*maxSquareSide;
+}
 int main()
 {
     // recursion marathon questions
@@ -121,5 +147,7 @@ int main()
     // string word2 = "ros";
     // cout << "minmun operations to convert = " << editTheDistance(word1, word2);
 
-    //ques 5 -  
+    //ques 5 -  maximal square : given an binary matrix of m*n , find the largest square containing 1 and return its area
+    vector<vector<int>>matrix={{1,0,1,0,0},{1,0,1,1,1},{1,1,1,1,1},{1,0,0,1,0}};
+    cout<<"square of max 1's : "<<maximalSquare(matrix);
 }
