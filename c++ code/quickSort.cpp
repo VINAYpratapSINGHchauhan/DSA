@@ -10,6 +10,7 @@ int partition(vector<int> &arr, int s, int e)
     for (int i = s+1; i <= e; i++)
     {
         if (arr[i] < element)
+        if (arr[i] <= element)
         {
             count++;
         }
@@ -55,7 +56,7 @@ void quickSort(vector<int> &arr)
 }
 int main()
 {
-    vector<int> arr = {9 ,2 ,6 ,9 ,1 ,4 ,4 ,3};
+    vector<int> arr = { 5,6,3,5,666,2,4,2,55};
     quickSort(arr);
     for (int i =0;i<arr.size();i++)
     {
@@ -63,3 +64,4 @@ int main()
     }
     cout << endl;
 }
+// 5,6,3,5,666,2,4,2,55
