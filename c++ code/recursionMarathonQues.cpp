@@ -147,7 +147,10 @@ int main()
     // string word2 = "ros";
     // cout << "minmun operations to convert = " << editTheDistance(word1, word2);
 
-    //ques 5 -  maximal square : given an binary matrix of m*n , find the largest square containing 1 and return its area
-    vector<vector<int>>matrix={{1,0,1,0,0},{1,0,1,1,1},{1,1,1,1,1},{1,0,0,1,0}};
-    cout<<"square of max 1's : "<<maximalSquare(matrix);
+    // //ques 5 -  maximal square : given an binary matrix of m*n , find the largest square containing 1 and return its area
+    // vector<vector<int>>matrix={{1,0,1,0,0},{1,0,1,1,1},{1,1,1,1,1},{1,0,0,1,0}};
+    // cout<<"square of max 1's : "<<maximalSquare(matrix);
+
+    //doubt class 7 notes/code:
+     
 }
