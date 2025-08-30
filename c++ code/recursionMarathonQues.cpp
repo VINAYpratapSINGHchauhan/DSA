@@ -124,6 +124,44 @@ int maximalSquare(vector<vector<int>> &matrix){
     solveMS(matrix, i , j,maxSquareSide);
     return maxSquareSide*maxSquareSide;
 }
+
+void merge(vector<int> &arr, vector<int>& temp,int s , int e){
+    int mid=s+(e-s)/2;
+    int k=s;
+    int i =s, j =mid+1;
+    while(i<=mid && j<=e){
+        if(arr[i]<=arr[j]){
+            temp[k++]=arr[i++];
+        }else if(arr[j]<arr[i]){
+            temp[k++]=arr[j++];
+        }
+    }
+    while(i<=mid){
+        temp[k++]=arr[i++];
+    }
+    while(j<=e){
+        temp[k++]=arr[j++];
+    }
+    while(s<=e){
+        arr[s]=temp[s];
+        s++;
+    }
+}
+void solvemerge(vector<int> &arr, vector<int>& temp,int s , int e){
+    if(s>=e){
+        return ;
+    }
+    int mid=s+(e-s)/2;
+    solvemerge(arr, temp, s,mid);
+    solvemerge(arr, temp,mid+1,e);
+    merge(arr, temp, s,e);
+}
+void mergesort(vector<int> &arr){
+    int i=0;
+    int e=arr.size()-1;
+    vector<int> temp(e+1,0);
+    solvemerge(arr,temp, i, e);
+}
 int main()
 {
     // recursion marathon questions
@@ -152,5 +190,17 @@ int main()
     // cout<<"square of max 1's : "<<maximalSquare(matrix);
 
     //doubt class 7 notes/code:
+
+    //doubt class 8 notes/code:
+
+    // //-> merge sort with another approach - temp array approach
+    // vector<int> arr={0,1,85,4122,7,1,3,0,985,7};
+    // mergesort(arr);
+    // for (int e:arr){
+    //     cout<<e<<" ";
+    // }
+    // cout<<endl;
      
+     
+
 }

@@ -124,7 +124,7 @@ void printSubsequences(string str, string output, int index)
     printSubsequences(str, output, index + 1);
     // include
     output.push_back(ch);
-    printSubsequences(str, output, index + 1);
+    printSubsequences(str, output, index  + 1);
 }
 
 int maximiseTheCuts(int n, int x, int y, int z)
