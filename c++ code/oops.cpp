@@ -23,18 +23,35 @@ public:
     }
 
     // copy constructure
-    Student(const Student &srcobj) //const likha gya hai taki srcobj meo koi chnage na ho by refrence pass hua h kyuki hm hm hi copy bna rhe hai 
-    { 
-        cout<<"student copy constructure is called"<<endl;
-        this->name=srcobj.name;
-        this->id=srcobj.id;
-        this->gf=srcobj.gf;
-        this->age=srcobj.age;
+    Student(const Student &srcobj) // const likha gya hai taki srcobj meo koi chnage na ho by refrence pass hua h kyuki hm hm hi copy bna rhe hai
+    {
+        cout << "student copy constructure is called" << endl;
+        this->name = srcobj.name;
+        this->id = srcobj.id;
+        this->gf = srcobj.gf;
+        this->age = srcobj.age;
     }
 
     Student()
     {
         cout << "constructor with no parameter is called" << endl;
+    }
+
+    // destructor
+    ~Student()
+    {
+        cout << "Destuctor is called" << endl;
+    }
+
+    // getter and setter to get access to the private member in the main function
+    string getGFname()
+    {
+        return gf;
+    }
+    void setGFname(string gfname)
+    {
+        this->gf = gfname;
+        cout << "gf chnged successfully" << endl;
     }
 
     void study()
@@ -63,8 +80,8 @@ int main()
     //    string name;
     //    cout<<sizeof(name);
 
-    Student s1(01, "vinay", 21, "aditya");
-    cout << s1.name << endl;
+    Student s1(01, "vinay", 21, "aditi");
+    // cout << s1.name << endl;
     // Student s2;
     // Student s3;                // this is created on stack memory - static allocation
     // Student *s4 = new Student; // this is created on heap memory - dynamic allocation
@@ -73,13 +90,17 @@ int main()
     // delete s4;
     // delete s5;
 
-    // copy object
-    Student s6 ;
-    s6=s1;
-    cout << s6.name << endl;
-    //copy object through copy constructure
-    Student s7=s1; // OR Student s7(s1);
+    // // copy object
+    // Student s6 ;
+    // s6=s1;
+    // cout << s6.name << endl;
+    // //copy object through copy constructure
+    // Student s7=s1; // OR Student s7(s1);
 
-
+    // getter and setter
+    cout << s1.getGFname() << endl;
+    s1.setGFname("nikita");
+    cout << s1.getGFname() << endl;
+ 
     return 0;
 }
