@@ -83,33 +83,48 @@ public:
         cout << "x:" << x << " y:" << y << endl;
     }
     // ex: + operator overloading
-    op operator+(const op&src){
-        this->x +=src.x;
-        this->y +=src.y;
-    } 
-    //ex: ++ operator overloading
-    op operator++(){
+    op operator+(const op &src)
+    {
+        this->x += src.x;
+        this->y += src.y;
+    }
+    // ex: ++ operator overloading
+    op operator++()
+    {
         this->x++;
         this->y++;
     }
 };
 
-//runtime polymorphism 
-class animal{
-    public :
-    void sound(){
-        cout<<"animal making sound"<<endl;
+// runtime polymorphism
+class animal
+{
+public:
+    virtual void sound()
+    {
+        cout << "animal making sound" << endl;
+    }
+    virtual ~animal(){
+        cout<<"animal dtor"<<endl;
     }
 };
-class dog : public animal{
-    public :
-    void sound(){ //sound function is overidden here
-        cout<<"dog is making sound"<<endl;
+
+class dog : public animal
+{
+public:
+    void sound() override
+    { // sound function is overidden here
+        cout << "dog is making sound" << endl;
+    }
+    ~dog(){
+        cout<<"dog dtor"<<endl;
     }
 };
-void sound(animal *animal){
-    animal->sound();
-}
+void sound(animal *animal)
+{
+    animal->sound(); //this line is polymorphic
+    //here , animal->sound is behaving as per required object allocated at runtime
+    }
 int main()
 {
     // sparrow s(10, 32, "green");
@@ -150,12 +165,17 @@ int main()
     // op2.display();
 
     // type 2- runtime polymorphism
-    // 1. function overriding 
-    dog d1;
-    d1.sound(); //sound is overridden here
-    dog *d2=new dog();
-    d2->sound();
-    animal *d3=new dog();  //this is static binding or early binding
-    sound(d3); //hme krna dog ka sound call hai but hua animal hai kyuki dog runtime mei bnne se phle animal ka pointer compile tim emei bn chuka hai therefore animal ka sound call hua this is static binding problem that it ye function call statically or compile time mei animal se assoisiate ho gyi.
+    // 1. function overriding
+    // dog d1;
+    // d1.sound();
+    // dog *d2 = new dog();
+    // d2->sound();
+    animal *d3 = new dog(); // this is static binding or early binding
+    sound(d3);              // hme krna dog ka sound call hai but hua animal hai kyuki dog runtime mei bnne se phle animal ka pointer compile time mei bn chuka hai therefore animal ka sound call hua this is static binding problem that it ye function call statically or compile time mei animal se assoisiate ho gyi.
+    // virtual keyword is used- virtual likh dene se bo cheez compile time mei  associate ni hoti hai , jha jha hmne kisi parent clss k function k sth virtual use kra h toh hme uski derived classses  mei jha bo virtual wala funciton overridden hai udr hme override keyword use krna pdega that increases code readiability as pdne wale ko pta lg jayga ki ye function parent class mei virtual hai
+    // there fore sound functon in animal class is made virtual -- this is called late binding 
+    // after this line 165 will also print dog wala sound perivosuly it is printign animal wala.
+    delete d3;
+    // delete d2;
     return 0;
 }
