@@ -177,5 +177,7 @@ int main()
     // after this line 165 will also print dog wala sound perivosuly it is printign animal wala.
     delete d3;
     // delete d2;
+    //abstract classes are also called interfaces in c++ and abstract class is that class in which there is atleast a one pure virtual function in it and abstract classes ka object/ instance ni bnaya ja skta hai
+    
     return 0;
 }
