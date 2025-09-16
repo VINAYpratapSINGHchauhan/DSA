@@ -60,12 +60,20 @@ node* startingPointOfLoop(node*head){
     }
     return slow;
 }
+void removeLoop(node*head){
+    node*startPoint=startingPointOfLoop(head);
+    node*temp=startPoint;
+    while(temp->next!=startPoint){
+        temp=temp->next;
+    }
+    temp->next=NULL;
+}
 int main()
 {
-    // reverse a list - LC: 206
-    // find middle of the list - LC: 876
-    // check palindrome linked list - LC: 234
-    // check cycle in a Linked List - LC: 141
+    // 1. reverse a list - LC: 206
+    // 2. find middle of the list - LC: 876
+    // 3. check palindrome linked list - LC: 234
+    // 4. check cycle in a Linked List - LC: 141
 
     // find starting point of loop - LC: 142 -solution here
     node*head=NULL;
@@ -78,5 +86,9 @@ int main()
     tail->next=head->next;
     // loop is present now finding the starting point of loop through code
     cout<<startingPointOfLoop(head)->val<<endl;
+    
+    // 5. remove loop from the linked list - LC: 
+    removeLoop(head);
+    printLL(head);
 
 }
