@@ -73,9 +73,19 @@ int main()
     // 1. reverse a list - LC: 206
     // 2. find middle of the list - LC: 876
     // 3. check palindrome linked list - LC: 234
-    // 4. check cycle in a Linked List - LC: 141
+    // 4. check cycle in a Linked List - LC: 141 
+    // 5. starting point of loop in a Linked List - LC: 142 (solution here also)
+    // 6. remove loop from the linked list - GFG  (solution here)
+    // 7. add 1 to a linked list number - LC: 369 (solution here)
+    // 8. add 2 number represented by linkedlist - LC: 02
+    // 9. reverse a linked list in a group of k - LC: 25
+    // 10. sort 0,1,2 in linked list - GFG (solution here)
+    // 11. remove duplicate in sorted linked list - LC: 83 
+    // 12. remove duplicate in sorted linked list 2 - LC: 82 
+    // 13. sort the given linked list - LC: 148
 
-    // find starting point of loop - LC: 142 -solution here
+
+    // 5.  find starting point of loop - LC: 142 -solution here
     node*head=NULL;
     node*tail=NULL;
     insertAthead(head,tail,10);
@@ -87,7 +97,7 @@ int main()
     // loop is present now finding the starting point of loop through code
     cout<<startingPointOfLoop(head)->val<<endl;
     
-    // 5. remove loop from the linked list - LC: 
+    // 6. remove loop from the linked list - LC: 
     removeLoop(head);
     printLL(head);
 
