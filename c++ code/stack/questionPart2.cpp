@@ -149,5 +149,8 @@ int main()
     }
 
     // 4. implement a min stack - LC: 155
-    // 5. next smaller element - LC: 
+    // 5. next smaller element - GFG
+    // 6. previous smaller element - GFG
+    // 7. final prices with a special discount in a shop - LC:1475
+    // 8. largest area in a histogram - LC:84
 }
