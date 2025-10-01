@@ -171,5 +171,5 @@ int main()
     cout<<q.getSize();
 
     // circular queue
-    // here the size of the queue is rear-front +1 and if space available anywhere in the array it will be used no memory wastage i.e circular queue
+    // here the size of the queue is rear-front +1 and if space available anywhere in the array it will be used no memory wastage i.e circular queue explanation in notebook
 }
