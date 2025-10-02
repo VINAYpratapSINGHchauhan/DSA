@@ -139,36 +139,36 @@ int main()
     // }
     // cout<<endl;
 
-    // implementing queue from scratch
-    que q(5);
-    q.print();
-    cout << q.empty() << endl;
-    cout << q.getFront() << endl;
-    cout << q.getBack() << endl;
-    cout << q.getSize() << endl;
-    q.push(10);
-    q.push(20);
-    q.push(30);
-    q.push(40);
-    q.push(50);
-    q.push(60);
-    q.print();
-    cout << q.getFront() << endl;
-    cout << q.getBack() << endl;
-    cout << q.getSize() << endl;
-    q.pop();
-    q.pop();
-    q.print();
-    q.push(60);
-    cout << q.getFront() << endl;
-    cout << q.getBack() << endl;
-    cout << q.getSize() << endl;
-    q.pop();
-    q.pop();
-    q.pop();
-    q.pop();
-    q.print();
-    cout<<q.getSize();
+    // // implementing queue from scratch
+    // que q(5);
+    // q.print();
+    // cout << q.empty() << endl;
+    // cout << q.getFront() << endl;
+    // cout << q.getBack() << endl;
+    // cout << q.getSize() << endl;
+    // q.push(10);
+    // q.push(20);
+    // q.push(30);
+    // q.push(40);
+    // q.push(50);
+    // q.push(60);
+    // q.print();
+    // cout << q.getFront() << endl;
+    // cout << q.getBack() << endl;
+    // cout << q.getSize() << endl;
+    // q.pop();
+    // q.pop();
+    // q.print();
+    // q.push(60);
+    // cout << q.getFront() << endl;
+    // cout << q.getBack() << endl;
+    // cout << q.getSize() << endl;
+    // q.pop();
+    // q.pop();
+    // q.pop();
+    // q.pop();
+    // q.print();
+    // cout<<q.getSize();
 
     // circular queue
     // here the size of the queue is rear-front +1 and if space available anywhere in the array it will be used no memory wastage i.e circular queue explanation in notebook
