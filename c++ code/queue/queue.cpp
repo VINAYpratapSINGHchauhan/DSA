@@ -169,7 +169,8 @@ int main()
     // q.pop();
     // q.print();
     // cout<<q.getSize();
-
+    // end of linear queue
+    
     // circular queue
     // here the size of the queue is rear-front +1 and if space available anywhere in the array it will be used no memory wastage i.e circular queue explanation in notebook
     //un wanted line
