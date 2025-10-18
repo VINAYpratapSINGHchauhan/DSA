@@ -109,35 +109,35 @@ public:
 int main()
 {
 
-    // BY STL
-    //creation
-    queue<int> q;
-    //insertion
-    q.push(5);
-    q.push(55);
-    q.push(555);
-    q.push(5555);
+    // // BY STL
+    // //creation
+    // queue<int> q;
+    // //insertion
+    // q.push(5);
+    // q.push(55);
+    // q.push(555);
+    // q.push(5555);
 
-    cout<<"size: "<<q.size()<<endl;
-    cout<<"front: "<<q.front()<<endl;
-    cout<<"back: "<<q.back()<<endl;
-    //deletion from front
-    q.pop();
-    cout<<"popped"<<endl;
-    cout<<"front: "<<q.front()<<endl;
-    cout<<"back: "<<q.back()<<endl;
-    q.pop();
-    cout<<"popped"<<endl;
-    cout<<"front: "<<q.front()<<endl;
-    cout<<"back: "<<q.back()<<endl;
-    // empty case
-    if(q.empty()) cout<<"empty"<<endl;
-    // printing queue
-    while(!q.empty()){
-        cout<<q.front()<<" ";
-        q.pop();
-    }
-    cout<<endl;
+    // cout<<"size: "<<q.size()<<endl;
+    // cout<<"front: "<<q.front()<<endl;
+    // cout<<"back: "<<q.back()<<endl;
+    // //deletion from front
+    // q.pop();
+    // cout<<"popped"<<endl;
+    // cout<<"front: "<<q.front()<<endl;
+    // cout<<"back: "<<q.back()<<endl;
+    // q.pop();
+    // cout<<"popped"<<endl;
+    // cout<<"front: "<<q.front()<<endl;
+    // cout<<"back: "<<q.back()<<endl;
+    // // empty case
+    // if(q.empty()) cout<<"empty"<<endl;
+    // // printing queue
+    // while(!q.empty()){
+    //     cout<<q.front()<<" ";
+    //     q.pop();
+    // }
+    // cout<<endl;
 
     // // implementing queue from scratch
     // que q(5);
