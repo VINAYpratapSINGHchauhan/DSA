@@ -106,6 +106,88 @@ public:
         cout << endl;
     }
 };
+class Cque
+{
+public:
+    int *arr;
+    int size;
+    int front;
+    int rear;
+
+    Cque(int size)
+    {
+        arr = new int[size];
+        this->size = size;
+        this->front = -1;
+        this->rear = -1;
+    }
+
+    void push(int val)
+    {
+        // case 1: jisme overflow ho rha ho
+        if (front == 0 && rear == size - 1 || front == rear + 1)
+        {
+            cout << "OVERFLOW" << endl;
+            return;
+        }
+        else if (front == -1 && rear == -1)
+        {
+            // case 2: first element insert kr rhe h hm
+            front++;
+            rear++;
+            arr[front] = val;
+        }
+        else if (rear == size - 1 && front != 0)
+        {
+            // case 3 : circular aage first index pr isert kro
+            rear = 0;
+            arr[rear] = val;
+        }
+        else
+        {
+            // normal pushing
+            rear++;
+            arr[rear] = val;
+        }
+    }
+    void pop()
+    {
+        // case 1: popping from empty queue
+        if (front == -1 && rear == -1)
+        {
+            cout << "UNDERFLOW" << endl;
+            return;
+        }
+        else if (front == rear)
+        {
+            // case 2: popping single element
+            arr[front] = -1;
+            front = -1;
+            rear = -1;
+        }
+        else if (front == size - 1)
+        {
+            // case 3 : circular wala
+            arr[front] = 0;
+            front = 0;
+        }
+        else
+        {
+            // normal popping
+            arr[front] = 0;
+            front++;
+        }
+    }
+    void display()
+    {
+        cout << "printing queue : " ;
+        for (int i = 0; i < size; i++)
+        {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
 int main()
 {
 
@@ -170,8 +252,33 @@ int main()
     // q.print();
     // cout<<q.getSize();
     // end of linear queue
-    
-    // circular queue
+
+    // CIRCULAR QUEUE
     // here the size of the queue is rear-front +1 and if space available anywhere in the array it will be used no memory wastage i.e circular queue explanation in notebook
-    //un wanted line
+    Cque cq1(5);
+    cq1.display();
+    cq1.push(10);
+    cq1.push(20);
+    cq1.push(30);
+    cq1.display();
+    cq1.push(40);
+    cq1.push(50);
+    cq1.display();
+    cq1.push(60);
+    cq1.display();
+    cq1.pop();
+    cq1.pop();
+    cq1.pop();
+    cq1.display();
+    cq1.push(60);
+    cq1.push(70);
+    cq1.display();
+    cq1.push(80);
+    cq1.display();
+    cq1.push(90);
+    cq1.display();
+    cq1.pop();
+    cq1.pop();
+    cq1.pop();
+    cq1.display();
 }
