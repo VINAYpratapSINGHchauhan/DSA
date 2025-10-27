@@ -136,6 +136,13 @@ vector<int> firstNegIntInKWindows(vector<int> arr, int k)
     }
     return ans;
 }
+int findFirstNonReapeating(string s){
+    vector<int> freq(26, 0);
+    for (char c : s) freq[c - 'a']++;
+    for (int i = 0; i < s.size(); i++)
+        if (freq[s[i] - 'a'] == 1) return i;
+    return -1;
+}
 int main()
 {
     queue<int> q;
@@ -167,14 +174,26 @@ int main()
     // interleaveQueue(q);
     // printQueue(q);
 
-    /// question 4: find neagtive interger in every window of size k
-    vector<int> arr = {2, -5, 4, -1, -2, 0, 5};
-    int k = 2;
-    vector<int> ans=firstNegIntInKWindows(arr, k);
-    for(int i=0;i<ans.size();i++){
-        cout<<ans[i]<<" ";
-    }
-    cout<<endl;
+    // // question 4: find neagtive interger in every window of size k
+    // vector<int> arr = {2, -5, 4, -1, -2, 0, 5};
+    // int k = 2;
+    // vector<int> ans=firstNegIntInKWindows(arr, k);
+    // for(int i=0;i<ans.size();i++){
+    //     cout<<ans[i]<<" ";
+    // }
+    // cout<<endl;
+
+    // //question 5: find first non repeatig character in a stream
+    // string str="ababc";
+    // string str2="facfdcad";
+    // cout<<"index of first non repeating character in the while string  is "<<findFirstNonReapeating(str2)<<endl;
+    
+    //question 6 : gas station -lc 134
+    //explanation in notebook and code & solution both in note book and on lc 
+
+    //question 7 : sliding window maximum -lc 239
+    //explanation in notebook and code & solution both in note book and on lc
+
 
     return 0;
 }
