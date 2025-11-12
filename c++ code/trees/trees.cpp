@@ -31,8 +31,23 @@ node* createTree(){
     root->right=createTree();
     return root;
 }
+
+void preOrderTraversel(node* root){
+    //base case
+    if(root==NULL){
+        return;
+    }
+    // pre order traversel  NLR
+    // 1. N - current node
+    cout<<root->data<<" ";
+    // 2. L - left node
+    preOrderTraversel(root->left);
+    // 3. R - right part
+    preOrderTraversel(root->right);
+}
 int main(){
     node* root=createTree();
-    
+    cout<<"Pre Order Traversel of the Tree is "<<endl;
+    preOrderTraversel(root);
     return 0;
 }
