@@ -45,9 +45,41 @@ void preOrderTraversel(node* root){
     // 3. R - right part
     preOrderTraversel(root->right);
 }
+void inOrderTraversel(node* root){
+    //base case
+    if(root==NULL){
+        return ;
+    }
+    // inOrder - LNR
+    // 1. L- left part
+    inOrderTraversel(root->left);
+    // 2. N- cuurent node
+    cout<<root->data<<" ";
+    // 3. R- right part
+    inOrderTraversel(root->right);
+}
+void postOrderTraversel(node* root){
+    //base case
+    if(root==NULL){
+        return ;
+    }
+    // postOrder - LRN
+    // 1. L- left part
+    postOrderTraversel(root->left);
+    // 2. R- right part
+    postOrderTraversel(root->right);
+    // 3. N- cuurent node
+    cout<<root->data<<" ";
+}
 int main(){
     node* root=createTree();
     cout<<"Pre Order Traversel of the Tree is "<<endl;
     preOrderTraversel(root);
+    cout<<endl;
+    cout<<"IN Order Traversel of the Tree is "<<endl;
+    inOrderTraversel(root);
+    cout<<endl;
+    cout<<"Post Order Traversel of the Tree is "<<endl;
+    postOrderTraversel(root);
     return 0;
 }
