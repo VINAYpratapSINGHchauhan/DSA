@@ -124,5 +124,12 @@ int main(){
     cout<<endl;
     cout<<"level Order Traversel with marker of the Tree is "<<endl;
     levelOrderTraverselWithMarker(root);
+
+    // question 1 - find max height of a binary tree (LC-104)
+    // question 2 - find diameter of a binary tree (LC-543)
+    // question 3 - find min height to the lefnode of a binary tree (LC-111)
+    // question 4 - height balanced binary tree (LC-110)
+    // question 5 - find path sum of a binary tree (LC-112)
+    // question 6 - find path sum 2 of a binary tree (LC-113)
     return 0;
 }
