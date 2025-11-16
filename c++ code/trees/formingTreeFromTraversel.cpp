@@ -54,6 +54,20 @@ TreeNode* createTreeFromPreAndInordertraversel(vector<int>pre, vector<int>in,map
     newTreeNode->right=createTreeFromPreAndInordertraversel(pre,in,inordermap,pindex,pos+1,ie);
     return newTreeNode;
 }
+
+TreeNode* createTreeFromPostAndInordertraversel(vector<int>post, vector<int>in,map<int,int>&inordermap,int &postindex, int is, int ie){
+    if(postindex<0||is>ie)return NULL;
+    //ek case mei solve krunga
+    TreeNode*newTreeNode=new TreeNode(post[postindex]);
+    //search the element in inorder
+    // int pos=searchInInorder(in,pre[pindex]);// taking o(n) time to search therefore using map in second line to make it more efficient
+    int pos=inordermap[post[postindex]];
+    postindex--;
+    newTreeNode->right=createTreeFromPostAndInordertraversel(post,in,inordermap,postindex,pos+1,ie);
+    newTreeNode->left=createTreeFromPostAndInordertraversel(post,in,inordermap,postindex,is,pos-1);
+    return newTreeNode;
+}
+
 int main(){
     // preorder and inorder traversel is given return the formed tree
     vector<int>preorder={2,8,10,6,4,12};
@@ -66,5 +80,13 @@ int main(){
     TreeNode*root=createTreeFromPreAndInordertraversel(preorder, inorder,inorderMap, preorderIndex, inorderStart,inorderEnd);
     cout<<"printing the tree :"<<endl;
     lvlordertraversel(root);
+
+    //post order and inrder traversel is givem form the tree
+    vector<int>postorder={10,6,8,12,4,2};
+    int postorderIndex=postorder.size()-1;
+    //taking inorder, inorderStart , inorderEnd and inorder map from above code
+    TreeNode*root2=createTreeFromPostAndInordertraversel(postorder, inorder,inorderMap, postorderIndex, inorderStart,inorderEnd);
+    cout<<"printing the tree :"<<endl;
+    lvlordertraversel(root2);
     return 0;
 }
