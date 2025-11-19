@@ -210,6 +210,39 @@ vector<int> printBottomView(node*root){
     }
     return ans;
 }
+
+// border traversel krne k liye functions
+void printLeftBoundary(node*root){
+    if(root==NULL)return;
+    if(root->left==NULL&&root->right==NULL)return ;
+    cout<<root->data<<" ";
+    if(root->left!=NULL)printLeftBoundary(root->left);
+    else printLeftBoundary(root->right);
+}
+void printBottomBoundary(node*root){
+    if(root==NULL)return;
+    if(root->left==NULL&&root->right==NULL) cout<<root->data<<" " ;
+    printBottomBoundary(root->left);
+    printBottomBoundary(root->right);
+}
+void printRightBoundary(node*root){
+    if(root==NULL)return;
+    if(root->left==NULL&&root->right==NULL)return ;
+    if(root->right!=NULL)printLeftBoundary(root->right);
+    else printLeftBoundary(root->right);
+    cout<<root->data<<" ";
+}
+void printBorderTraversel(node*root){
+    if(root==NULL){
+        return ;
+    }
+    cout<<root->data<<" ";
+    printLeftBoundary(root->left);
+    printBottomBoundary(root->left);
+    printBottomBoundary(root->right);
+    printRightBoundary(root->right);
+
+}
 int main(){
     node*root=createTree();
     // tree is 10 30 61 -1 -1 60 62 -1 -1 -1 20 50 -1 65 -1 69 -1 -1 40 -1 -1 
@@ -247,6 +280,8 @@ int main(){
     for(auto e:bottomview){
         cout<<e<<" ";
     }
-    
+    cout<<endl;
+    cout<<"Printing border traversel of the tree : "<<endl;
+    printBorderTraversel(root);
     return 0;
 }
