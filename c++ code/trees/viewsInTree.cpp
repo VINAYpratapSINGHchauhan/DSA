@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+#include<map>
 using namespace std;
 class node{
     public:
@@ -167,6 +168,48 @@ void rightViewByLevelTraversel(node*root){
         }
     }
 }
+vector<int> printTopView(node*root){
+    vector<int> ans ;
+    if(root==NULL)return {};
+    map <int ,int>leveltoNode;
+    queue<pair<node*,int>>q;
+    q.push(make_pair(root,0));
+    while(!q.empty()){
+        pair<node*, int> fpair=q.front();
+        q.pop();
+        node*fnode=fpair.first;
+        int level=fpair.second;
+        if(leveltoNode.find(level)==leveltoNode.end()){
+            leveltoNode[level]=fnode->data;
+        }
+        if(fnode->left!=NULL)q.push(make_pair(fnode->left,level-1));
+        if(fnode->right!=NULL)q.push(make_pair(fnode->right,level+1));
+    }
+    for(auto v:leveltoNode){
+        ans.push_back(v.second);
+    }
+    return ans;
+}
+vector<int> printBottomView(node*root){
+    vector<int> ans ;
+    if(root==NULL)return {};
+    map <int ,int>leveltoNode;
+    queue<pair<node*,int>>q;
+    q.push(make_pair(root,0));
+    while(!q.empty()){
+        pair<node*, int> fpair=q.front();
+        q.pop();
+        node*fnode=fpair.first;
+        int level=fpair.second;
+            leveltoNode[level]=fnode->data;
+        if(fnode->left!=NULL)q.push(make_pair(fnode->left,level-1));
+        if(fnode->right!=NULL)q.push(make_pair(fnode->right,level+1));
+    }
+    for(auto v:leveltoNode){
+        ans.push_back(v.second);
+    }
+    return ans;
+}
 int main(){
     node*root=createTree();
     // tree is 10 30 61 -1 -1 60 62 -1 -1 -1 20 50 -1 65 -1 69 -1 -1 40 -1 -1 
@@ -192,6 +235,18 @@ int main(){
     leftViewByLevelTraversel(root);
     cout<<endl;
     rightViewByLevelTraversel(root);
+    cout<<endl;
+    vector<int> topview=printTopView(root);
+    vector<int> bottomview=printBottomView(root);
+    cout<<"printing top view : "<<endl;
+    for(auto e:topview){
+        cout<<e<<" ";
+    }
+    cout<<endl;
+    cout<<"printing bottom view : "<<endl;
+    for(auto e:bottomview){
+        cout<<e<<" ";
+    }
     
     return 0;
 }
