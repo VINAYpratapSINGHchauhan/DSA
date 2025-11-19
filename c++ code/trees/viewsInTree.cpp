@@ -229,7 +229,7 @@ void printRightBoundary(node*root){
     if(root==NULL)return;
     if(root->left==NULL&&root->right==NULL)return ;
     if(root->right!=NULL)printRightBoundary(root->right);
-    else printRightBoundary(root->right);
+    else printRightBoundary(root->left);
     cout<<root->data<<" ";
 }
 void printBorderTraversel(node*root){
