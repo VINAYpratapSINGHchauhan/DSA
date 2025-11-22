@@ -51,11 +51,34 @@ void levelOrderTraverselWithMarker(TreeNode*root){ //this is with marker that ea
         }
     }
 }
+TreeNode* minValueBST(TreeNode*root){
+    if(root==NULL)return NULL;
+    TreeNode*tmp=root;
+    while(tmp->left!=NULL)tmp=tmp->left;
+    return tmp;
+}
+TreeNode* maxValueBST(TreeNode*root){
+    if(root==NULL)return NULL;
+    TreeNode*tmp=root;
+    while(tmp->right!=NULL)tmp=tmp->right;
+    return tmp;
+}
 int main(){
     // creating a binary search tree
     TreeNode*root=NULL;
     createBST(root);
     cout<<"printing binary search tree"<<endl;
     levelOrderTraverselWithMarker(root);
+
+    //find the minimum element node in the binary search tree
+    TreeNode*minNode=minValueBST(root);
+    cout<<"minimum value of the tree is : "<<minNode->data;
+    //find the maximum element node in the binary search tree
+    cout<<endl;
+    TreeNode*maxNode=maxValueBST(root);
+    cout<<"maximum value of the tree is : "<<maxNode->data;
+    cout<<endl;
+
+    
     return 0;
 }
