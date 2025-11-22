@@ -86,11 +86,68 @@ TreeNode *maxValueBST(TreeNode *root)
         tmp = tmp->right;
     return tmp;
 }
-bool searchInBST(TreeNode*root,int target){
-    if(root==NULL)return false;
-    if(target==root->data)return true;
-    else if(target>root->data)return searchInBST(root->right,target);
-    else return searchInBST(root->left,target);
+bool searchInBST(TreeNode *root, int target)
+{
+    if (root == NULL)
+        return false;
+    if (target == root->data)
+        return true;
+    else if (target > root->data)
+        return searchInBST(root->right, target);
+    else
+        return searchInBST(root->left, target);
+}
+TreeNode *deleteInBST(TreeNode *root, int key)
+{
+    // jb root null ho
+    if (root == NULL)
+        return NULL;
+    // jb target mil jaye
+    else if (root->data == key)
+    {
+        // target k baad hme char case hai
+        if (root->left == NULL && root->right == NULL)
+        {
+            // jb jha mila hai target bo ek leaf node hai
+            delete root;
+            return NULL;
+        }
+        else if (root->left != NULL && root->right == NULL)
+        {
+            // jb jha mila hai target uska left mei subtree hai but right khali hai
+            TreeNode *child = root->left;
+            delete root;
+            return child;
+        }
+        else if (root->left == NULL && root->right != NULL)
+        {
+            // jb jha mila hai target uska right mei subtree hai but left khali hai
+            TreeNode *child = root->right;
+            delete root;
+            return child;
+        }
+        else
+        {
+            // jb dono left and right subtree present ho
+            //  root ki node ki value ko uske left subtree k maximum node se replacement kro
+            // getting the max value
+            TreeNode *maxChildNode = maxValueBST(root->left);
+            // copying the value
+            root->data = maxChildNode->data;
+            // deleting that node jisse reolace kiya hai
+            root->left = deleteInBST(root->left, maxChildNode->data);
+            return root;
+        }
+    }
+    else if (root->data > key)
+    {
+        root->left = deleteInBST(root->left, key);
+    }
+    else
+    {
+        root->right = deleteInBST(root->right, key);
+    }
+    return root;
 }
 int main()
 {
@@ -115,12 +172,25 @@ int main()
     cin >> target;
     while (target != -1)
     {
-        if (searchInBST(root,target))
+        if (searchInBST(root, target))
             cout << "FOUND !" << endl;
         else
             cout << "NOT FOUND !" << endl;
         cout << "Enter the value for target : ";
         cin >> target;
+    }
+
+    // deleting a node from the binary search tree
+    levelOrderTraverselWithMarker(root);
+    int key;
+    cout << "Enter the value for key to be deleted : ";
+    cin >> key;
+    while (key != -1)
+    {
+        root = deleteInBST(root, key);
+        levelOrderTraverselWithMarker(root);
+        cout << "Enter the value for key to be deleted : ";
+        cin >> key;
     }
     return 0;
 }
