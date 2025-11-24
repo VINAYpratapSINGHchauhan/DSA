@@ -168,6 +168,25 @@ void printDLL(TreeNode*head){
     cout<<endl;
     
 }
+int sizeOfDLL(TreeNode*head){
+    TreeNode*temp=head;
+    int count=0;
+    while(temp!=NULL){
+        count++;
+        temp=temp->right;
+    }
+    return count;
+}
+TreeNode*convertDLLtoBST(TreeNode*&head,int n){
+    if(head==NULL||n<=0)return nullptr;
+    TreeNode*leftsubtree=convertDLLtoBST(head,n/2);
+    TreeNode*root=head;
+    root->left=leftsubtree;
+    head=head->right;
+    TreeNode*rightsubtree=convertDLLtoBST(head,n-(n/2)-1);
+    root->right=rightsubtree;
+    return root;
+}
 int main()
 {
     // creating a binary search tree
@@ -216,5 +235,12 @@ int main()
     TreeNode*head=NULL;
     convertBSTtoDLL(root,head);
     printDLL(head);
+
+    // creating a BST from a sorted doubly linked list
+    int n =sizeOfDLL(head);
+    TreeNode*newroot=convertDLLtoBST(head,n);
+    cout<<"printing the tree from DLL : "<<endl;
+    levelOrderTraverselWithMarker(newroot);
+
     return 0;
 }
