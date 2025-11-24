@@ -149,6 +149,25 @@ TreeNode *deleteInBST(TreeNode *root, int key)
     }
     return root;
 }
+void convertBSTtoDLL(TreeNode*root,TreeNode*&head){
+    if(!root)return ;
+    convertBSTtoDLL(root->right,head);
+    root->right=head;
+    if(head)head->left=root;
+    head=root;
+    convertBSTtoDLL(root->left,head);
+}
+void printDLL(TreeNode*head){
+    TreeNode*temp=head;
+    cout<<"printing the DLL : "<<endl;
+    while (temp)
+    {
+        cout<<temp->data<<"->";
+        temp=temp->right;
+    }
+    cout<<endl;
+    
+}
 int main()
 {
     // creating a binary search tree
@@ -192,5 +211,10 @@ int main()
         cout << "Enter the value for key to be deleted : ";
         cin >> key;
     }
+
+    //creating a sorted doubly linked list from the binary search tree
+    TreeNode*head=NULL;
+    convertBSTtoDLL(root,head);
+    printDLL(head);
     return 0;
 }
