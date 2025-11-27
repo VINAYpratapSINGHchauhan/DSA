@@ -64,6 +64,29 @@ class heap{
         }
     }
 };
+void heapify(int arr[],int n,int index){
+    int leftindex=2*index;
+    int rightindex=2*index+1;
+    int largestindex=index;
+    if(leftindex<=n&&arr[leftindex]>arr[largestindex]){
+        largestindex=leftindex;
+    }
+    if(rightindex<=n&&arr[rightindex]>arr[largestindex]){
+        largestindex=rightindex;
+    }
+    if(largestindex==index)return ;
+    else{
+        swap(arr[largestindex],arr[index]);
+        heapify(arr,n,largestindex);
+    }
+}
+void buildHeap(int arr[],int n){
+    //form n/2 +1 index to n there are leaf nodes therefore they do not need to be heapify 
+    for(int i =n/2;i>0;i--){
+        heapify(arr,n,i);
+    }
+    return ;
+}
 int main(){
     heap h(6);
     h.insertHeap(10);
@@ -73,5 +96,15 @@ int main(){
     h.insertHeap(30);
     h.insertHeap(40);
     h.printHeap();
+
+    //converting an array in to max heap 
+    int arr[]={-1,10,25,4,67,89,100}; //array k 0th index ko hm heap mei process ni krte hai so hm usme -1 store kr diya
+    int size=6;
+    buildHeap(arr,size);
+    cout<<"printing the heap created through array : \n";
+    for(int i =1;i<=size;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
     return 0;
 }
