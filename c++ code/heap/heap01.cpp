@@ -87,6 +87,13 @@ void buildHeap(int arr[],int n){
     }
     return ;
 }
+void heapSort(int arr[],int size){
+    while(size!=1){
+        swap(arr[1],arr[size]);
+        size--;
+        heapify(arr,size,1);
+    }
+}
 int main(){
     heap h(6);
     h.insertHeap(10);
@@ -106,5 +113,13 @@ int main(){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
+    
+    //heap sort
+    heapSort(arr,size);
+    cout<<"printing the sorted heap : \n";
+    for(int i =1;i<=size;i++){
+        cout<<arr[i]<<" ";
+    }
+
     return 0;
 }
