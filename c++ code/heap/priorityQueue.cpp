@@ -58,7 +58,22 @@ bool checkHeap(TreeNode* root) {
     bool rightOK = root->data >= root->right->data;
     return leftOK && rightOK && checkHeap(root->left) && checkHeap(root->right);
 }
-
+bool checkCBT(TreeNode*root){
+    queue<TreeNode*>q;
+    q.push(root);
+    bool nullfound=false;
+    while(!q.empty()){
+        TreeNode*front=q.front();
+        q.pop();
+        if(front==NULL)nullfound=true;
+        else{
+            if(nullfound)return false;
+            q.push(front->left);
+            q.push(front->right);
+        }
+    }
+    return true;
+}
 int main(){
     //creating a max heap 
     priority_queue<int>pq;
@@ -102,6 +117,11 @@ int main(){
     TreeNode*root=createTree();
     cout<<"Is CBT a valid heap : \n";
     checkHeap(root)?cout<<"true":cout<<"false"<<endl;
+
+    //check if a tree is complete binary tree or not
+    TreeNode*root2=createTree();
+    cout<<"Is Given Tree a valid CBT : \n";
+    checkCBT(root2)?cout<<"true":cout<<"false"<<endl;  
 
     return 0;
 }
