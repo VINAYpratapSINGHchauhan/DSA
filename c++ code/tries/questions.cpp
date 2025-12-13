@@ -80,7 +80,6 @@ void storeWords(TrieNode*root,vector<string>&ans,string &word){
 void countWords(TrieNode*root,string prefix,vector<string>&ans,int i){
     //base case
     if(i==prefix.length()){
-        // if(root->isTerminal)ans.push_back(prefix);
         storeWords(root,ans,prefix);
         cout<<"successully founded words\n";
         return ;
@@ -92,21 +91,43 @@ void countWords(TrieNode*root,string prefix,vector<string>&ans,int i){
     }
     countWords(root->children[index],prefix,ans,i+1);
 }
+void countWords2(TrieNode*root,string prefix,vector<string>&ans,int i,string&p){
+    //base case
+    if(i==prefix.length()){
+        return ;
+    }
+    int index=prefix[i]-'a';
+    if(index<0||index>=26||!root->children[index]){
+        cout<<"invalid prefix\n";
+        return ;
+    }
+    p.push_back(prefix[i]);
+    storeWords(root->children[index],ans,p);
+    countWords2(root->children[index],prefix,ans,i+1,p);
+}
 int main(){
     //creation
     TrieNode* root=new TrieNode('-');
     //insertion
     insertTrie(root,"vinay");
     insertTrie(root,"vin");
-    insertTrie(root,"vinayak");
+    insertTrie(root,"vonayak");
     insertTrie(root,"vinu");
     insertTrie(root,"pratap");
     insertTrie(root,"singh");
     insertTrie(root,"chauhan");
     // printng the words that starts with the specific prefix
-    string prefix="viny";
+    string prefix="vin";
     vector<string> words;
     countWords(root,prefix,words,0);
     for(auto str:words)cout<<str<<" ";
+    cout<<endl;
+    // extention of upper question now we have to store prefix first of prefix[0]....prefix
+    //example firrt prefix is v then prefix is vi then prefix is vin
+    string p="";
+    vector<string>allWords;
+    countWords2(root,prefix,allWords,0,p);
+    for(auto str:allWords)cout<<str<<" ";
+
     return 0;
 }
