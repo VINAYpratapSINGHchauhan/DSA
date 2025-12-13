@@ -62,8 +62,18 @@ void deleteTrie(TrieNode*root,string s,int i ){
     deleteTrie(root->children[index],s,i+1);
     
 }
-void printTrie(TrieNode*root){
-
+void trieWords(TrieNode*root,vector<string>&words,string&str){
+    if(root->isTerminal){
+        words.push_back(str);
+    }
+    for(int i=0;i<26;i++){
+        TrieNode*child =root->children[i];
+        if(child){
+            str.push_back(child->val);
+            trieWords(child,words,str);
+            str.pop_back();
+        }
+    }
 }
 int main(){
     //creation
@@ -78,7 +88,13 @@ int main(){
     else cout<<"absent\n";
     //deletion
     deleteTrie(root,"vinay",0);
+    //deletion
     if(searchTrie(root,"vinay",0))cout<<"present\n";
     else cout<<"absent\n";
+    //printing the Trie tree that is printing all the words in the trie
+    vector<string>words;
+    string input="";
+    trieWords(root,words,input);
+    for(auto str:words)cout<<str<<" ";
     return 0;
 }
