@@ -98,7 +98,7 @@ void countWords2(TrieNode*root,string prefix,vector<string>&ans,int i,string&p){
     }
     int index=prefix[i]-'a';
     if(index<0||index>=26||!root->children[index]){
-        cout<<"invalid prefix\n";
+        cout<<"invalid prefix\n"; 
         return ;
     }
     p.push_back(prefix[i]);
