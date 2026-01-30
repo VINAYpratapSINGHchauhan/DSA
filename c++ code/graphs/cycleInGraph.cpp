@@ -102,6 +102,11 @@ public:
         }
         return false;
     }
+    /* check cycle in undirected graph through DFS
+        check cylce in direted BFS
+        check cycle in directed DFS
+        */ 
+    // - these all are done in gfg question and in the notebook
 };
 
 int main()
